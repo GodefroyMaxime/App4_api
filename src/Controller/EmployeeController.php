@@ -18,7 +18,7 @@ class EmployeeController extends AbstractController
     #[Route('/', name: 'app_employee_index', methods: ['GET'])]
     public function index(EmployeeRepository $employeeRepository, WorkdayService $api): Response
     {
-        //$api->EmployeeData();
+        $api->EmployeeData();
         return $this->render('employee/index.html.twig', [
             'employees' => $employeeRepository->findAll(),
         ]);
