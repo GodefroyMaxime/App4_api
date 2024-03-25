@@ -18,6 +18,7 @@ services:
         exclude:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
+            - '../src/Migrations/'
             - '../src/Kernel.php'
 
     # add more service definitions when explicit configuration is needed
@@ -30,4 +31,4 @@ services:
     
     App\Service\WorkdayService:
         arguments:
-            $api: '@App\Service\ApiAuthenticationService'
+            $authentication: '@App\Service\ApiAuthenticationService'
