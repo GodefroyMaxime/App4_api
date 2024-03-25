@@ -6,7 +6,7 @@
 parameters:
 
 services:
-    # default configuration for services in *this* file
+    # default configuration for services in *this* file 
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
@@ -22,3 +22,12 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Service\ApiAuthenticationService:
+        arguments:
+            $client: '@Symfony\Contracts\HttpClient\HttpClientInterface'
+            $params: '@Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface'
+    
+    App\Service\WorkdayService:
+        arguments:
+            $api: '@App\Service\ApiAuthenticationService'
