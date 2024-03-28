@@ -31,4 +31,8 @@ services:
     
     App\Service\WorkdayService:
         arguments:
-            $authentication: '@App\Service\ApiAuthenticationService'
+            $authentication: '@App\Service\ApiAuthenticationService'    
+
+    App\Service\ApiToBDDService:
+        arguments:
+            $workday: '@App\Service\WorkdayService'
