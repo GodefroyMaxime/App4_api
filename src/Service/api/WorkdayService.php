@@ -19,9 +19,9 @@ class WorkdayService
         return $reportEntries;
     }
 
-    public function employeeDataRecovery(): Array {
+    public function employeeData(): Array {
         
-        $data = $this->jsonDecodeReport('TA_-_WB_-_Employee_List');
+        $data = $this->jsonDecodeReport('TA_-_WS_-_Employee_List');
         
         return $data;
     }
