@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\SupOrgaRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: SupOrgaRepository::class)]
@@ -18,6 +19,14 @@ class SupOrga
 
     #[ORM\Column(length: 255)]
     private ?string $wordayId = null;
+
+    #[ORM\Column]
+    private ?bool $active = null;
+    
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $created_at = null;
+
+
 
     public function getId(): ?int
     {
@@ -44,6 +53,30 @@ class SupOrga
     public function setWordayId(string $wordayId): static
     {
         $this->wordayId = $wordayId;
+
+        return $this;
+    }
+
+    public function isActive(): ?bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): static
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+    
+    public function getCreated_at(): ?\DateTimeInterface
+    {
+        return $this->created_at;
+    }
+
+    public function setCreated_at(\DateTimeInterface $created_at): static
+    {
+        $this->created_at = $created_at;
 
         return $this;
     }

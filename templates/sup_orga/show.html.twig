@@ -19,6 +19,14 @@
                 <th>WordayId</th>
                 <td>{{ sup_orga.wordayId }}</td>
             </tr>
+            <tr>
+                <th>Active</th>
+                <td>{{ sup_orga.active ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ sup_orga.createdAt ? sup_orga.createdAt|date('Y-m-d') : '' }}</td>
+            </tr>
         </tbody>
     </table>
 

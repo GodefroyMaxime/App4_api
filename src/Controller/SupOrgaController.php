@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/sup/orga')]
+#[Route('/suporga')]
 class SupOrgaController extends AbstractController
 {
     #[Route('/', name: 'app_sup_orga_index', methods: ['GET'])]
