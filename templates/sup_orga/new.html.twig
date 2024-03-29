@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New SupOrga{% endblock %}
+
+{% block body %}
+    <h1>Create new SupOrga</h1>
+
+    {{ include('sup_orga/_form.html.twig') }}
+
+    <a href="{{ path('app_sup_orga_index') }}">back to list</a>
+{% endblock %}

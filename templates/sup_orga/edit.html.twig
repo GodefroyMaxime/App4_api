@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit SupOrga{% endblock %}
+
+{% block body %}
+    <h1>Edit SupOrga</h1>
+
+    {{ include('sup_orga/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_sup_orga_index') }}">back to list</a>
+
+    {{ include('sup_orga/_delete_form.html.twig') }}
+{% endblock %}

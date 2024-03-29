@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SupOrga{% endblock %}
+
+{% block body %}
+    <h1>SupOrga</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ sup_orga.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ sup_orga.name }}</td>
+            </tr>
+            <tr>
+                <th>WordayId</th>
+                <td>{{ sup_orga.wordayId }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_sup_orga_index') }}">back to list</a>
+
+    <a href="{{ path('app_sup_orga_edit', {'id': sup_orga.id}) }}">edit</a>
+
+    {{ include('sup_orga/_delete_form.html.twig') }}
+{% endblock %}

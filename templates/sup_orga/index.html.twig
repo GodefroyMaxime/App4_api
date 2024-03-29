@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SupOrga index{% endblock %}
+
+{% block body %}
+    <h1>SupOrga index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>WordayId</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sup_orga in sup_orgas %}
+            <tr>
+                <td>{{ sup_orga.id }}</td>
+                <td>{{ sup_orga.name }}</td>
+                <td>{{ sup_orga.wordayId }}</td>
+                <td>
+                    <a href="{{ path('app_sup_orga_show', {'id': sup_orga.id}) }}">show</a>
+                    <a href="{{ path('app_sup_orga_edit', {'id': sup_orga.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_sup_orga_new') }}">Create new</a>
+{% endblock %}
