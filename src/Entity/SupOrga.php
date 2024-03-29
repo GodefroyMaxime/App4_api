@@ -18,7 +18,7 @@ class SupOrga
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $wordayId = null;
+    private ?string $workdayId = null;
 
     #[ORM\Column]
     private ?bool $active = null;
@@ -45,14 +45,14 @@ class SupOrga
         return $this;
     }
 
-    public function getWordayId(): ?string
+    public function getWorkdayId(): ?string
     {
-        return $this->wordayId;
+        return $this->workdayId;
     }
 
-    public function setWordayId(string $wordayId): static
+    public function setWorkdayId(string $workdayId): static
     {
-        $this->wordayId = $wordayId;
+        $this->workdayId = $workdayId;
 
         return $this;
     }
