@@ -24,7 +24,7 @@ class SupOrga
     private ?bool $active = null;
     
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $created_at = null;
+    private ?\DateTimeInterface $createdAt = null;
 
 
 
@@ -69,14 +69,14 @@ class SupOrga
         return $this;
     }
     
-    public function getCreated_at(): ?\DateTimeInterface
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
 
-    public function setCreated_at(\DateTimeInterface $created_at): static
+    public function setCreatedAt(\DateTimeInterface $createdAt): static
     {
-        $this->created_at = $created_at;
+        $this->createdAt = $createdAt;
 
         return $this;
     }

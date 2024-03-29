@@ -15,7 +15,7 @@ class SupOrgaType extends AbstractType
             ->add('name')
             ->add('workdayId')
             ->add('active')
-            ->add('created_at', null, [
+            ->add('createdAt', null, [
                 'widget' => 'single_text',
             ])
         ;
