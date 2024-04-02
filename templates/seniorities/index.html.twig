@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Seniorities index{% endblock %}
+
+{% block body %}
+    <h1>Seniorities index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ProfileStartDate</th>
+                <th>Level3</th>
+                <th>Level4</th>
+                <th>Level5</th>
+                <th>ManagementLevel</th>
+                <th>ManagementChain</th>
+                <th>Seniority</th>
+                <th>Level1</th>
+                <th>PositionId</th>
+                <th>Level2</th>
+                <th>Active</th>
+                <th>CreatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for seniority in seniorities %}
+            <tr>
+                <td>{{ seniority.id }}</td>
+                <td>{{ seniority.profileStartDate ? seniority.profileStartDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ seniority.level3 }}</td>
+                <td>{{ seniority.level4 }}</td>
+                <td>{{ seniority.level5 }}</td>
+                <td>{{ seniority.managementLevel }}</td>
+                <td>{{ seniority.managementChain }}</td>
+                <td>{{ seniority.seniority }}</td>
+                <td>{{ seniority.level1 }}</td>
+                <td>{{ seniority.positionId }}</td>
+                <td>{{ seniority.level2 }}</td>
+                <td>{{ seniority.active ? 'Yes' : 'No' }}</td>
+                <td>{{ seniority.createdAt ? seniority.createdAt|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_seniorities_show', {'id': seniority.id}) }}">show</a>
+                    <a href="{{ path('app_seniorities_edit', {'id': seniority.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="14">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_seniorities_new') }}">Create new</a>
+{% endblock %}

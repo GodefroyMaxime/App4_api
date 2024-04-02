@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Seniorities{% endblock %}
+
+{% block body %}
+    <h1>Seniorities</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ seniority.id }}</td>
+            </tr>
+            <tr>
+                <th>ProfileStartDate</th>
+                <td>{{ seniority.profileStartDate ? seniority.profileStartDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Level3</th>
+                <td>{{ seniority.level3 }}</td>
+            </tr>
+            <tr>
+                <th>Level4</th>
+                <td>{{ seniority.level4 }}</td>
+            </tr>
+            <tr>
+                <th>Level5</th>
+                <td>{{ seniority.level5 }}</td>
+            </tr>
+            <tr>
+                <th>ManagementLevel</th>
+                <td>{{ seniority.managementLevel }}</td>
+            </tr>
+            <tr>
+                <th>ManagementChain</th>
+                <td>{{ seniority.managementChain }}</td>
+            </tr>
+            <tr>
+                <th>Seniority</th>
+                <td>{{ seniority.seniority }}</td>
+            </tr>
+            <tr>
+                <th>Level1</th>
+                <td>{{ seniority.level1 }}</td>
+            </tr>
+            <tr>
+                <th>PositionId</th>
+                <td>{{ seniority.positionId }}</td>
+            </tr>
+            <tr>
+                <th>Level2</th>
+                <td>{{ seniority.level2 }}</td>
+            </tr>
+            <tr>
+                <th>Active</th>
+                <td>{{ seniority.active ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ seniority.createdAt ? seniority.createdAt|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_seniorities_index') }}">back to list</a>
+
+    <a href="{{ path('app_seniorities_edit', {'id': seniority.id}) }}">edit</a>
+
+    {{ include('seniorities/_delete_form.html.twig') }}
+{% endblock %}

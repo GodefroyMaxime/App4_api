@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Seniorities{% endblock %}
+
+{% block body %}
+    <h1>Edit Seniorities</h1>
+
+    {{ include('seniorities/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_seniorities_index') }}">back to list</a>
+
+    {{ include('seniorities/_delete_form.html.twig') }}
+{% endblock %}
