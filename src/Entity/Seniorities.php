@@ -16,7 +16,7 @@ class Seniorities
 
     #[ORM\OneToOne(inversedBy: 'seniorities', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Employee $employee_id_WD = null;
+    private ?Employee $employee = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $profileStartDate = null;
@@ -53,14 +53,14 @@ class Seniorities
         return $this->id;
     }
 
-    public function getEmployeeId(): ?Employee
+    public function getEmployee(): ?Employee
     {
-        return $this->employee_id_WD;
+        return $this->employee;
     }
 
-    public function setEmployeeId(Employee $employee_id_WD): static
+    public function setEmployee(Employee $employee): static
     {
-        $this->employee_id_WD = $employee_id_WD;
+        $this->employee = $employee;
 
         return $this;
     }
