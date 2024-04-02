@@ -48,6 +48,12 @@ class Seniorities
     #[ORM\Column(length: 255)]
     private ?string $level2 = null;
 
+    #[ORM\Column]
+    private ?bool $active = null;
+    
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $createdAt = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -181,6 +187,30 @@ class Seniorities
     public function setLevel2(string $level2): static
     {
         $this->level2 = $level2;
+
+        return $this;
+    }
+
+    public function isActive(): ?bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): static
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+    
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): static
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }
