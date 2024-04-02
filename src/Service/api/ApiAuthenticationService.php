@@ -15,7 +15,7 @@ class ApiAuthenticationService
     {
     }
 
-    public function fetchData(string $api, string $report, string $format = 'json')
+    public function fetchData(string $api, string $report, array $parameters = [], string $format = 'json')
     {
         $environment = $_ENV['API_ENV'] ?? 'dev'; // Récupère l'environnement de l'API
         $response = [];
@@ -26,9 +26,14 @@ class ApiAuthenticationService
                 $baseUrlKey = $_ENV[strtoupper($api) . '_BASE_URL_' . strtoupper($environment)];
                 $loginKey = $_ENV[strtoupper($api) . '_LOGIN_' . strtoupper($environment)];
                 $passwordKey = $_ENV[strtoupper($api) . '_PASSWORD_' . strtoupper($environment)];
-    
+                
+                $parametersQueryString = http_build_query($parameters); // Construit le string de paramètres
+            
+                // Ajoute le format comme dernier paramètre
+                $parametersQueryString .= (empty($parametersQueryString) ? '' : '&') . "format=" . $format;
+                
                 // Utilise la configuration pour faire la requête
-                $response = $this->client->request('GET', $baseUrlKey . '/' . $loginKey . '/' . $report . "?format=" . $format, [
+                $response = $this->client->request('GET', $baseUrlKey . '/' . $loginKey . '/' . $report . "?" . $parametersQueryString, [
                     'auth_basic' => [$loginKey, $passwordKey],
                 ]);
             } else if (strtoupper($api) == 'CEGID') {

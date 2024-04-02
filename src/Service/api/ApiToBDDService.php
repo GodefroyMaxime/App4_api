@@ -84,7 +84,9 @@ class ApiToBDDService
         foreach ($data as $dataKey => $dataValue) {
             $existingSupOrga = $this->supOrgaRepository->findOneBy([
                 'workdayId' => $dataValue->workdayId,
+                'active' => 1,
             ]);
+
 
             if (!$existingSupOrga) {
                 $supOrga = new SupOrga();
@@ -114,5 +116,9 @@ class ApiToBDDService
         }
 
         $this->entityManager->flush();
+    }
+
+    public function updateSenioritiesList() {
+        dd($this->workday->senioritiesData());
     }
 }

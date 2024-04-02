@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Seniorities;
 use App\Form\SenioritiesType;
 use App\Repository\SenioritiesRepository;
+use App\Service\ApiToBDDService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,8 +16,9 @@ use Symfony\Component\Routing\Attribute\Route;
 class SenioritiesController extends AbstractController
 {
     #[Route('/', name: 'app_seniorities_index', methods: ['GET'])]
-    public function index(SenioritiesRepository $senioritiesRepository): Response
+    public function index(SenioritiesRepository $senioritiesRepository, ApiToBDDService $api): Response
     {
+        $api->updateSenioritiesList();
         return $this->render('seniorities/index.html.twig', [
             'seniorities' => $senioritiesRepository->findAll(),
         ]);
