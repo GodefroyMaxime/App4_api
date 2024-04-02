@@ -4,14 +4,20 @@ namespace App\Service;
 
 use App\Entity\Employee;
 use App\Entity\EmployeeHistory;
+use App\Entity\SupOrga;
 use App\Repository\EmployeeRepository;
+use App\Repository\SupOrgaRepository;
 use App\Service\WorkdayService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class ApiToBDDService
 {
-    public function __construct(private WorkdayService $workday, private EmployeeRepository $employeeRepository, private EntityManagerInterface $entityManager, private NormalizerInterface $normalizer)
+    public function __construct(private WorkdayService $workday, 
+                                private EmployeeRepository $employeeRepository, 
+                                private SupOrgaRepository $supOrgaRepository, 
+                                private EntityManagerInterface $entityManager, 
+                                private NormalizerInterface $normalizer)
     {
     }
 
@@ -23,15 +29,6 @@ class ApiToBDDService
             $existingMatricule = $this->employeeRepository->findOneBy([
                 'employee_id' => $dataValue->employeeId,
             ]);
-
-            // $dynamicsVariables = [];
-
-            // foreach ($dataValue as $key => $value) {
-            //     try {
-            //         array_push($dynamicsVariables, $key);
-            //     } catch  (\Throwable $e) {
-            //     }
-            // }
 
             if(!$existingMatricule) {
                 $employee = new Employee();
@@ -74,6 +71,44 @@ class ApiToBDDService
                     $employee->setPrefFirstname($dataValue->prefFirstname);
                     $employee->setLastname($dataValue->lastname);
                     $this->entityManager->persist($employee);
+                }
+            }
+        }
+
+        $this->entityManager->flush();
+    }
+    
+    public function updateSupOrgaList() {
+        $data = $this->workday->supOrgaData();
+        
+        foreach ($data as $dataKey => $dataValue) {
+            $existingSupOrga = $this->supOrgaRepository->findOneBy([
+                'workdayId' => $dataValue->workdayId,
+            ]);
+
+            if (!$existingSupOrga) {
+                $supOrga = new SupOrga();
+                $supOrga->setName($dataValue->name);
+                $supOrga->setWorkdayId($dataValue->workdayId);
+                $supOrga->setActive('1');
+                $supOrga->setCreatedAt(new \DateTime());
+                $this->entityManager->persist($supOrga);
+            } else {
+                $lastData = $this->normalizer->normalize($existingSupOrga);
+                unset($lastData['id'], $lastData['active'], $lastData['createdAt']);
+                
+                $newDataValue = (array)$dataValue;
+
+                $differences = array_diff_assoc($lastData, $newDataValue);
+                if ($differences) {
+                    $existingSupOrga->setActive(0);
+                    
+                    $supOrga = new SupOrga();
+                    $supOrga->setName($dataValue->name);
+                    $supOrga->setWorkdayId($dataValue->workdayId);
+                    $supOrga->setActive('1');
+                    $supOrga->setCreatedAt(new \DateTime());
+                    $this->entityManager->persist($supOrga);
                 }
             }
         }

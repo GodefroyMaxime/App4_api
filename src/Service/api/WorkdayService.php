@@ -25,4 +25,10 @@ class WorkdayService
         
         return $data;
     }
+
+    public function supOrgaData(): Array {
+        $data = $this->jsonDecodeReport('TA_-_WB_-_Integration_IDs_Sup_Org');
+        
+        return $data;
+    }
 }
