@@ -34,9 +34,6 @@ class Employee
     #[ORM\Column(length: 255)]
     private ?string $lastname = null;
 
-    #[ORM\OneToOne(mappedBy: 'employee', cascade: ['persist', 'remove'])]
-    private ?Seniorities $seniorities = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -122,23 +119,6 @@ class Employee
     public function setLastname(string $lastname): static
     {
         $this->lastname = $lastname;
-
-        return $this;
-    }
-
-    public function getSeniorities(): ?Seniorities
-    {
-        return $this->seniorities;
-    }
-
-    public function setSeniorities(Seniorities $seniorities): static
-    {
-        // set the owning side of the relation if necessary
-        if ($seniorities->getEmployee() !== $this) {
-            $seniorities->setEmployee($this);
-        }
-
-        $this->seniorities = $seniorities;
 
         return $this;
     }

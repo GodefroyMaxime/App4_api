@@ -14,7 +14,7 @@ class Seniorities
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\OneToOne(inversedBy: 'seniorities', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(Employee::class)]
     #[ORM\JoinColumn(nullable: false)]
     private ?Employee $employee = null;
 

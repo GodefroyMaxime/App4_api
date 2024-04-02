@@ -33,7 +33,7 @@ class ApiAuthenticationService
                 $parametersQueryString .= (empty($parametersQueryString) ? '' : '&') . "format=" . $format;
                 
                 // Utilise la configuration pour faire la requête
-                $response = $this->client->request('GET', $baseUrlKey . '/' . $loginKey . '/' . $report . "?" . $parametersQueryString, [
+                $response = $this->client->request('GET', $baseUrlKey . '/' . $report . "?" . $parametersQueryString, [
                     'auth_basic' => [$loginKey, $passwordKey],
                 ]);
             } else if (strtoupper($api) == 'CEGID') {
