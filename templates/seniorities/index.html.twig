@@ -10,15 +10,20 @@
             <tr>
                 <th>Id</th>
                 <th>ProfileStartDate</th>
+                <th>Level1</th>
+                <th>Level2</th>
                 <th>Level3</th>
                 <th>Level4</th>
                 <th>Level5</th>
+                <th>Level6</th>
+                <th>Level7</th>
+                <th>Level8</th>
+                <th>Level9</th>
+                <th>Level10</th>
                 <th>ManagementLevel</th>
                 <th>ManagementChain</th>
                 <th>Seniority</th>
-                <th>Level1</th>
                 <th>PositionId</th>
-                <th>Level2</th>
                 <th>Active</th>
                 <th>CreatedAt</th>
                 <th>actions</th>
@@ -29,15 +34,20 @@
             <tr>
                 <td>{{ seniority.id }}</td>
                 <td>{{ seniority.profileStartDate ? seniority.profileStartDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ seniority.level1 }}</td>
+                <td>{{ seniority.level2 }}</td>
                 <td>{{ seniority.level3 }}</td>
                 <td>{{ seniority.level4 }}</td>
                 <td>{{ seniority.level5 }}</td>
+                <td>{{ seniority.level6 }}</td>
+                <td>{{ seniority.level7 }}</td>
+                <td>{{ seniority.level8 }}</td>
+                <td>{{ seniority.level9 }}</td>
+                <td>{{ seniority.level10 }}</td>
                 <td>{{ seniority.managementLevel }}</td>
                 <td>{{ seniority.managementChain }}</td>
                 <td>{{ seniority.seniority }}</td>
-                <td>{{ seniority.level1 }}</td>
                 <td>{{ seniority.positionId }}</td>
-                <td>{{ seniority.level2 }}</td>
                 <td>{{ seniority.active ? 'Yes' : 'No' }}</td>
                 <td>{{ seniority.createdAt ? seniority.createdAt|date('Y-m-d') : '' }}</td>
                 <td>
@@ -47,7 +57,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="14">no records found</td>
+                <td colspan="19">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

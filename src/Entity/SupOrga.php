@@ -26,8 +26,6 @@ class SupOrga
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $createdAt = null;
 
-
-
     public function getId(): ?int
     {
         return $this->id;

@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\SupOrga;
 use App\Form\SupOrgaType;
 use App\Repository\SupOrgaRepository;
-use App\Service\ApiToBDDService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,9 +15,8 @@ use Symfony\Component\Routing\Attribute\Route;
 class SupOrgaController extends AbstractController
 {
     #[Route('/', name: 'app_sup_orga_index', methods: ['GET'])]
-    public function index(SupOrgaRepository $supOrgaRepository, ApiToBDDService $api): Response
+    public function index(SupOrgaRepository $supOrgaRepository): Response
     {
-        $api->updateSupOrgaList();
         return $this->render('sup_orga/index.html.twig', [
             'sup_orgas' => $supOrgaRepository->findAll(),
         ]);

@@ -14,12 +14,18 @@ class Seniorities
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(Employee::class)]
+    #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?Employee $employee = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $profileStartDate = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $level1 = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $level2 = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $level3 = null;
@@ -29,6 +35,21 @@ class Seniorities
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $level5 = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $level6 = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $level7 = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $level8 = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $level9 = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $level10 = null;
 
     #[ORM\Column(length: 255)]
     private ?string $managementLevel = null;
@@ -40,13 +61,7 @@ class Seniorities
     private ?string $seniority = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $level1 = null;
-
-    #[ORM\Column(length: 255)]
     private ?string $positionId = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $level2 = null;
 
     #[ORM\Column]
     private ?bool $active = null;
@@ -64,7 +79,7 @@ class Seniorities
         return $this->employee;
     }
 
-    public function setEmployee(Employee $employee): static
+    public function setEmployee(?Employee $employee): static
     {
         $this->employee = $employee;
 
@@ -79,6 +94,30 @@ class Seniorities
     public function setProfileStartDate(\DateTimeInterface $profileStartDate): static
     {
         $this->profileStartDate = $profileStartDate;
+
+        return $this;
+    }
+
+    public function getLevel1(): ?string
+    {
+        return $this->level1;
+    }
+
+    public function setLevel1(?string $level1): static
+    {
+        $this->level1 = $level1;
+
+        return $this;
+    }
+
+    public function getLevel2(): ?string
+    {
+        return $this->level2;
+    }
+
+    public function setLevel2(?string $level2): static
+    {
+        $this->level2 = $level2;
 
         return $this;
     }
@@ -119,6 +158,66 @@ class Seniorities
         return $this;
     }
 
+    public function getLevel6(): ?string
+    {
+        return $this->level6;
+    }
+
+    public function setLevel6(?string $level6): static
+    {
+        $this->level6 = $level6;
+
+        return $this;
+    }
+
+    public function getLevel7(): ?string
+    {
+        return $this->level7;
+    }
+
+    public function setLevel7(?string $level7): static
+    {
+        $this->level7 = $level7;
+
+        return $this;
+    }
+
+    public function getLevel8(): ?string
+    {
+        return $this->level8;
+    }
+
+    public function setLevel8(?string $level8): static
+    {
+        $this->level8 = $level8;
+
+        return $this;
+    }
+
+    public function getLevel9(): ?string
+    {
+        return $this->level9;
+    }
+
+    public function setLevel9(?string $level9): static
+    {
+        $this->level9 = $level9;
+
+        return $this;
+    }
+
+    public function getLevel10(): ?string
+    {
+        return $this->level10;
+    }
+
+    public function setLevel10(?string $level10): static
+    {
+        $this->level10 = $level10;
+
+        return $this;
+    }
+
     public function getManagementLevel(): ?string
     {
         return $this->managementLevel;
@@ -155,18 +254,6 @@ class Seniorities
         return $this;
     }
 
-    public function getLevel1(): ?string
-    {
-        return $this->level1;
-    }
-
-    public function setLevel1(string $level1): static
-    {
-        $this->level1 = $level1;
-
-        return $this;
-    }
-
     public function getPositionId(): ?string
     {
         return $this->positionId;
@@ -175,18 +262,6 @@ class Seniorities
     public function setPositionId(string $positionId): static
     {
         $this->positionId = $positionId;
-
-        return $this;
-    }
-
-    public function getLevel2(): ?string
-    {
-        return $this->level2;
-    }
-
-    public function setLevel2(string $level2): static
-    {
-        $this->level2 = $level2;
 
         return $this;
     }

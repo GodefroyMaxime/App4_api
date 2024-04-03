@@ -66,15 +66,14 @@ class ApiToBDDService
 
                     $this->entityManager->remove($existingMatricule);
 
-                    $employee = new Employee();
-                    $employee->setFirstname($dataValue->firstname);
-                    $employee->setEmployeeId($dataValue->employeeId);
-                    $employee->setActive($dataValue->active === '1' ? true : false);
-                    $employee->setEmployeeIdWD($dataValue->employeeIdWD);
-                    $employee->setPrefLastname($dataValue->prefLastname);
-                    $employee->setPrefFirstname($dataValue->prefFirstname);
-                    $employee->setLastname($dataValue->lastname);
-                    $this->entityManager->persist($employee);
+                    $existingMatricule->setFirstname($dataValue->firstname);
+                    $existingMatricule->setEmployeeId($dataValue->employeeId);
+                    $existingMatricule->setActive($dataValue->active === '1' ? true : false);
+                    $existingMatricule->setEmployeeIdWD($dataValue->employeeIdWD);
+                    $existingMatricule->setPrefLastname($dataValue->prefLastname);
+                    $existingMatricule->setPrefFirstname($dataValue->prefFirstname);
+                    $existingMatricule->setLastname($dataValue->lastname);
+                    $this->entityManager->persist($existingMatricule);
                 }
             }
         }
@@ -154,6 +153,21 @@ class ApiToBDDService
                 if (isset($dataValue->level5)) {
                     $employeeSeniority->setLevel5($dataValue->level5);
                 }
+                if (isset($dataValue->level6)) {
+                    $employeeSeniority->setLevel1($dataValue->level6);
+                }
+                if (isset($dataValue->level7)) {
+                    $employeeSeniority->setLevel2($dataValue->level7);
+                }
+                if (isset($dataValue->level8)) {
+                    $employeeSeniority->setLevel3($dataValue->level8);
+                }
+                if (isset($dataValue->level9)) {
+                    $employeeSeniority->setLevel4($dataValue->level9);
+                }
+                if (isset($dataValue->level10)) {
+                    $employeeSeniority->setLevel5($dataValue->level10);
+                }
                 $employeeSeniority->setManagementLevel($dataValue->managementLevel);
                 $employeeSeniority->setManagementChain($dataValue->managementChain);
                 $employeeSeniority->setSeniority($dataValue->seniority);
@@ -167,23 +181,39 @@ class ApiToBDDService
                 $profileStartDate = new \DateTime($lastData['profileStartDate']);
                 $lastData['profileStartDate'] = $profileStartDate->format('Y-m-d');
                 unset($lastData['id'], $lastData['active'], $lastData['createdAt'], $lastData['employee']);
-                if ($lastData['level1'] == null) {
+
+                $newDataValue = (array)$dataValue;
+
+                if ($lastData['level1'] == null && !isset($newDataValue['level1'])) {
                     unset($lastData['level1']);
                 }
-                if ($lastData['level2'] == null) {
+                if ($lastData['level2'] == null && !isset($newDataValue['level2'])) {
                     unset($lastData['level2']);
                 }
-                if ($lastData['level3'] == null) {
+                if ($lastData['level3'] == null && !isset($newDataValue['level3'])) {
                     unset($lastData['level3']);
                 }
-                if ($lastData['level4'] == null) {
+                if ($lastData['level4'] == null && !isset($newDataValue['level4'])) {
                     unset($lastData['level4']);
                 }
-                if ($lastData['level5'] == null) {
+                if ($lastData['level5'] == null && !isset($newDataValue['level5'])) {
                     unset($lastData['level5']);
                 }
-                
-                $newDataValue = (array)$dataValue;
+                if ($lastData['level6'] == null && !isset($newDataValue['level6'])) {
+                    unset($lastData['level6']);
+                }
+                if ($lastData['level7'] == null && !isset($newDataValue['level7'])) {
+                    unset($lastData['level7']);
+                }
+                if ($lastData['level8'] == null && !isset($newDataValue['level8'])) {
+                    unset($lastData['level8']);
+                }
+                if ($lastData['level9'] == null && !isset($newDataValue['level9'])) {
+                    unset($lastData['level9']);
+                }
+                if ($lastData['level10'] == null && !isset($newDataValue['level10'])) {
+                    unset($lastData['level10']);
+                }
 
                 $differences = array_diff_assoc($lastData, $newDataValue);
                 if ($differences) {
@@ -206,6 +236,21 @@ class ApiToBDDService
                     }
                     if (isset($dataValue->level5)) {
                         $employeeSeniority->setLevel5($dataValue->level5);
+                    }
+                    if (isset($dataValue->level6)) {
+                        $employeeSeniority->setLevel1($dataValue->level6);
+                    }
+                    if (isset($dataValue->level7)) {
+                        $employeeSeniority->setLevel2($dataValue->level7);
+                    }
+                    if (isset($dataValue->level8)) {
+                        $employeeSeniority->setLevel3($dataValue->level8);
+                    }
+                    if (isset($dataValue->level9)) {
+                        $employeeSeniority->setLevel4($dataValue->level9);
+                    }
+                    if (isset($dataValue->level10)) {
+                        $employeeSeniority->setLevel5($dataValue->level10);
                     }
                     $employeeSeniority->setManagementLevel($dataValue->managementLevel);
                     $employeeSeniority->setManagementChain($dataValue->managementChain);

@@ -17,15 +17,20 @@ class SenioritiesType extends AbstractType
             ->add('profileStartDate', null, [
                 'widget' => 'single_text',
             ])
+            ->add('level1')
+            ->add('level2')
             ->add('level3')
             ->add('level4')
             ->add('level5')
+            ->add('level6')
+            ->add('level7')
+            ->add('level8')
+            ->add('level9')
+            ->add('level10')
             ->add('managementLevel')
             ->add('managementChain')
             ->add('seniority')
-            ->add('level1')
             ->add('positionId')
-            ->add('level2')
             ->add('active')
             ->add('createdAt', null, [
                 'widget' => 'single_text',

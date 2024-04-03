@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Employee;
 use App\Form\EmployeeType;
 use App\Repository\EmployeeRepository;
-use App\Service\ApiToBDDService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,9 +15,8 @@ use Symfony\Component\Routing\Attribute\Route;
 class EmployeeController extends AbstractController
 {
     #[Route('/', name: 'app_employee_index', methods: ['GET'])]
-    public function index(EmployeeRepository $employeeRepository, ApiToBDDService $api): Response
+    public function index(EmployeeRepository $employeeRepository): Response
     {
-        $api->updateEmployeeList();
         return $this->render('employee/index.html.twig', [
             'employees' => $employeeRepository->findAll(),
         ]);
