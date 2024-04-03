@@ -5,6 +5,7 @@ namespace App\Command;
 use App\Service\ApiToBDDService;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -33,6 +34,9 @@ class AppUpdatingDataCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
+        $progressBar = new ProgressBar($output, 3);
+
+        $progressBar->start();
 
         // $arg1 = $input->getArgument('arg1');
 
@@ -46,18 +50,21 @@ class AppUpdatingDataCommand extends Command
 
         try {
             $this->api->updateEmployeeList();
-            $io->success('La liste des employés a été mise à jour avec succès.');
-    
+            $progressBar->advance();
+            $io->writeln(' La liste des employés a été mise à jour avec succès.');
+        
             $this->api->updateSupOrgaList();
-            $io->success('La liste des organisations supérieur a été mise à jour avec succès.');
-    
+            $progressBar->advance();
+            $io->writeln(' La liste des organisations supérieures a été mise à jour avec succès.');
+        
             $this->api->updateSenioritiesList();
-            $io->success('La liste des anciennetés a été mise à jour avec succès.');
-    
-            $io->note('Toutes les mises à jour nécessaires ont été effectuées.');
+            $progressBar->advance();
+            $io->writeln(' La liste des anciennetés a été mise à jour avec succès.');
+        
+            $progressBar->finish();
         } catch (\Exception $e) {
             $io->error(sprintf('Une erreur est survenue pendant la mise à jour des données : %s', $e->getMessage()));
-    
+            $progressBar->finish();
             return Command::FAILURE;
         }
     
