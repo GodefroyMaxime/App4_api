@@ -6,9 +6,9 @@ use App\Service\ApiToBDDService;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\ProgressBar;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
+// use Symfony\Component\Console\Input\InputArgument;
+// use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
@@ -49,6 +49,8 @@ class AppUpdatingDataCommand extends Command
         // }
 
         try {
+            $io->newLine(1);
+        
             $this->api->updateEmployeeList();
             $progressBar->advance();
             $io->writeln(' La liste des employés a été mise à jour avec succès.');
