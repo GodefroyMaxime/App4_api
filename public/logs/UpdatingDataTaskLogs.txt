@@ -5845,3 +5845,88 @@
  [OK] [2024-04-04 15:24:32] - Les données de l'application ont été mises à jour avec succès depuis les services web.    
 
 
+[2024-04-04 15:25:34] - Commande exécutée avec succès : 
+[2024-04-04 15:25:00] - Démmarage de la mise à jour de la liste des employés.
+[2024-04-04 15:25:13] - Le matricule 0000004 a été mis à jour.
+[2024-04-04 15:25:14] - Le matricule 000000000 a été mis à jour.
+[2024-04-04 15:25:17] - 2 matricules ont été mis à jour.
+[2024-04-04 15:25:13] - Le matricule 4 a été archivé.
+[2024-04-04 15:25:14] - Le matricule 0 a été archivé.
+[2024-04-04 15:25:17] - 2 matricules ont été archivés.
+[2024-04-04 15:25:17] - La liste des employés a été mise à jour avec succès.
+[2024-04-04 15:25:17] - Démmarage de la mise à jour de la liste des organisations supérieures.
+[2024-04-04 15:25:18] - La liste des organisations supérieures a été mise à jour avec succès.
+[2024-04-04 15:25:18] - Démmarage de la mise à jour de la liste des anciennetés.
+[2024-04-04 15:25:34] - La liste des anciennetés a été mise à jour avec succès.
+
+ [OK] [2024-04-04 15:25:34] - Les données de l'application ont été mises à jour avec succès depuis les services web.    
+
+
+[2024-04-04 15:26:34] - Commande exécutée avec succès : 
+[2024-04-04 15:26:00] - Démmarage de la mise à jour de la liste des employés.
+[2024-04-04 15:26:14] - Le matricule 0000004 a été mis à jour.
+[2024-04-04 15:26:14] - Le matricule 000000000 a été mis à jour.
+[2024-04-04 15:26:17] - 2 matricules ont été mis à jour.
+[2024-04-04 15:26:14] - Le matricule 4 a été archivé.
+[2024-04-04 15:26:14] - Le matricule 0 a été archivé.
+[2024-04-04 15:26:17] - 2 matricules ont été archivés.
+[2024-04-04 15:26:17] - La liste des employés a été mise à jour avec succès.
+[2024-04-04 15:26:17] - Démmarage de la mise à jour de la liste des organisations supérieures.
+[2024-04-04 15:26:18] - La liste des organisations supérieures a été mise à jour avec succès.
+[2024-04-04 15:26:18] - Démmarage de la mise à jour de la liste des anciennetés.
+[2024-04-04 15:26:34] - La liste des anciennetés a été mise à jour avec succès.
+
+ [OK] [2024-04-04 15:26:34] - Les données de l'application ont été mises à jour avec succès depuis les services web.    
+
+
+[2024-04-04 15:27:35] - Commande exécutée avec succès : 
+[2024-04-04 15:27:01] - Démmarage de la mise à jour de la liste des employés.
+[2024-04-04 15:27:15] - Le matricule 0000004 a été mis à jour.
+[2024-04-04 15:27:15] - Le matricule 000000000 a été mis à jour.
+[2024-04-04 15:27:18] - 2 matricules ont été mis à jour.
+[2024-04-04 15:27:15] - Le matricule 4 a été archivé.
+[2024-04-04 15:27:15] - Le matricule 0 a été archivé.
+[2024-04-04 15:27:18] - 2 matricules ont été archivés.
+[2024-04-04 15:27:18] - La liste des employés a été mise à jour avec succès.
+[2024-04-04 15:27:18] - Démmarage de la mise à jour de la liste des organisations supérieures.
+[2024-04-04 15:27:19] - La liste des organisations supérieures a été mise à jour avec succès.
+[2024-04-04 15:27:19] - Démmarage de la mise à jour de la liste des anciennetés.
+[2024-04-04 15:27:35] - La liste des anciennetés a été mise à jour avec succès.
+
+ [OK] [2024-04-04 15:27:35] - Les données de l'application ont été mises à jour avec succès depuis les services web.    
+
+
+[2024-04-04 15:28:36] - Commande exécutée avec succès : 
+[2024-04-04 15:28:00] - Démmarage de la mise à jour de la liste des employés.
+[2024-04-04 15:28:15] - Le matricule 0000004 a été mis à jour.
+[2024-04-04 15:28:16] - Le matricule 000000000 a été mis à jour.
+[2024-04-04 15:28:18] - 2 matricules ont été mis à jour.
+[2024-04-04 15:28:15] - Le matricule 4 a été archivé.
+[2024-04-04 15:28:16] - Le matricule 0 a été archivé.
+[2024-04-04 15:28:18] - 2 matricules ont été archivés.
+[2024-04-04 15:28:18] - La liste des employés a été mise à jour avec succès.
+[2024-04-04 15:28:18] - Démmarage de la mise à jour de la liste des organisations supérieures.
+[2024-04-04 15:28:19] - La liste des organisations supérieures a été mise à jour avec succès.
+[2024-04-04 15:28:19] - Démmarage de la mise à jour de la liste des anciennetés.
+[2024-04-04 15:28:36] - La liste des anciennetés a été mise à jour avec succès.
+
+ [OK] [2024-04-04 15:28:36] - Les données de l'application ont été mises à jour avec succès depuis les services web.    
+
+
+[2024-04-04 15:29:37] - Commande exécutée avec succès : 
+[2024-04-04 15:29:01] - Démmarage de la mise à jour de la liste des employés.
+[2024-04-04 15:29:15] - Le matricule 0000004 a été mis à jour.
+[2024-04-04 15:29:16] - Le matricule 000000000 a été mis à jour.
+[2024-04-04 15:29:19] - 2 matricules ont été mis à jour.
+[2024-04-04 15:29:15] - Le matricule 4 a été archivé.
+[2024-04-04 15:29:16] - Le matricule 0 a été archivé.
+[2024-04-04 15:29:19] - 2 matricules ont été archivés.
+[2024-04-04 15:29:19] - La liste des employés a été mise à jour avec succès.
+[2024-04-04 15:29:19] - Démmarage de la mise à jour de la liste des organisations supérieures.
+[2024-04-04 15:29:20] - La liste des organisations supérieures a été mise à jour avec succès.
+[2024-04-04 15:29:20] - Démmarage de la mise à jour de la liste des anciennetés.
+[2024-04-04 15:29:37] - La liste des anciennetés a été mise à jour avec succès.
+
+ [OK] [2024-04-04 15:29:37] - Les données de l'application ont été mises à jour avec succès depuis les services web.    
+
+

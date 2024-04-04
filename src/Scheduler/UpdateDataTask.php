@@ -16,7 +16,7 @@ class UpdateDataTask implements ScheduleProviderInterface
     public function getSchedule(): Schedule
     {
         $schedule = new Schedule();
-        $cronExpression = new CronExpression('* * * * *');
+        $cronExpression = new CronExpression('0 */12 * * *');
 
         $schedule->add(
             RecurringMessage::trigger(
