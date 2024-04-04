@@ -16,7 +16,6 @@ class UpdateDataTask implements ScheduleProviderInterface
     public function getSchedule(): Schedule
     {
         $schedule = new Schedule();
-        // Créez une instance de CronExpression
         $cronExpression = new CronExpression('* * * * *');
 
         $schedule->add(

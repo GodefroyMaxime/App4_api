@@ -25,8 +25,12 @@ class ApiToBDDService
     {
     }
 
-    public function updateEmployeeList() {
+    public function updateEmployeeList(): Array {
         $data = $this->workday->employeeData();
+        $update = [];
+        $update['create'] = [];
+        $update['history'] = [];
+        $update['update'] = [];
         
         foreach ($data as $dataKey => $dataValue) {
 
@@ -44,6 +48,8 @@ class ApiToBDDService
                 $employee->setPrefFirstname($dataValue->prefFirstname);
                 $employee->setLastname($dataValue->lastname);
                 $this->entityManager->persist($employee);
+
+                $update['create'] += [$dataValue->employeeId => date('Y-m-d H:i:s')];
             } else {
                 $lastData = $this->normalizer->normalize($existingMatricule);
                 unset($lastData['id']);
@@ -74,15 +80,24 @@ class ApiToBDDService
                     $existingMatricule->setPrefFirstname($dataValue->prefFirstname);
                     $existingMatricule->setLastname($dataValue->lastname);
                     $this->entityManager->persist($existingMatricule);
+
+                    $update['history'] += [$existingMatricule->getEmployeeId() => date('Y-m-d H:i:s')];
+                    $update['update'] += [$dataValue->employeeId => date('Y-m-d H:i:s')];
                 }
             }
         }
 
         $this->entityManager->flush();
+
+        return $update;
     }
     
-    public function updateSupOrgaList() {
+    public function updateSupOrgaList(): Array {
         $data = $this->workday->supOrgaData();
+        $update = [];
+        $update['create'] = [];
+        $update['history'] = [];
+        $update['update'] = [];
         
         foreach ($data as $dataKey => $dataValue) {
             $existingSupOrga = $this->supOrgaRepository->findOneBy([
@@ -97,6 +112,8 @@ class ApiToBDDService
                 $supOrga->setActive('1');
                 $supOrga->setCreatedAt(new \DateTime());
                 $this->entityManager->persist($supOrga);
+                
+                $update['create'] += [$dataValue->name => date('Y-m-d H:i:s')];
             } else {
                 $lastData = $this->normalizer->normalize($existingSupOrga);
                 unset($lastData['id'], $lastData['active'], $lastData['createdAt']);
@@ -105,6 +122,7 @@ class ApiToBDDService
 
                 $differences = array_diff_assoc($lastData, $newDataValue);
                 if ($differences) {
+
                     $existingSupOrga->setActive(0);
                     
                     $supOrga = new SupOrga();
@@ -113,16 +131,24 @@ class ApiToBDDService
                     $supOrga->setActive('1');
                     $supOrga->setCreatedAt(new \DateTime());
                     $this->entityManager->persist($supOrga);
+                    
+                    $update['history'] += [$existingSupOrga->getName() => date('Y-m-d H:i:s')];
+                    $update['update'] += [$dataValue->name => date('Y-m-d H:i:s')];
                 }
             }
         }
 
         $this->entityManager->flush();
+
+        return $update;
     }
 
-    public function updateSenioritiesList() {
-
+    public function updateSenioritiesList(): Array {
         $data = $this->workday->senioritiesData();
+        $update = [];
+        $update['create'] = [];
+        $update['history'] = [];
+        $update['update'] = [];
         
         foreach ($data as $dataKey => $dataValue) {
             $employee = $this->employeeRepository->findOneBy([
@@ -154,19 +180,19 @@ class ApiToBDDService
                     $employeeSeniority->setLevel5($dataValue->level5);
                 }
                 if (isset($dataValue->level6)) {
-                    $employeeSeniority->setLevel1($dataValue->level6);
+                    $employeeSeniority->setLevel6($dataValue->level6);
                 }
                 if (isset($dataValue->level7)) {
-                    $employeeSeniority->setLevel2($dataValue->level7);
+                    $employeeSeniority->setLevel7($dataValue->level7);
                 }
                 if (isset($dataValue->level8)) {
-                    $employeeSeniority->setLevel3($dataValue->level8);
+                    $employeeSeniority->setLevel8($dataValue->level8);
                 }
                 if (isset($dataValue->level9)) {
-                    $employeeSeniority->setLevel4($dataValue->level9);
+                    $employeeSeniority->setLevel9($dataValue->level9);
                 }
                 if (isset($dataValue->level10)) {
-                    $employeeSeniority->setLevel5($dataValue->level10);
+                    $employeeSeniority->setLevel10($dataValue->level10);
                 }
                 $employeeSeniority->setManagementLevel($dataValue->managementLevel);
                 $employeeSeniority->setManagementChain($dataValue->managementChain);
@@ -175,6 +201,9 @@ class ApiToBDDService
                 $employeeSeniority->setActive('1');
                 $employeeSeniority->setCreatedAt(new \DateTime());
                 $this->entityManager->persist($employeeSeniority);
+
+                
+                $update['create'] += [$employee->getEmployeeId() => date('Y-m-d H:i:s')];
             } else {
                 $lastData = $this->normalizer->normalize($existingEmployeeSeniority);
                 $lastData += ['employeeId' => $lastData['employee']['employeeIdWD']];
@@ -238,19 +267,19 @@ class ApiToBDDService
                         $employeeSeniority->setLevel5($dataValue->level5);
                     }
                     if (isset($dataValue->level6)) {
-                        $employeeSeniority->setLevel1($dataValue->level6);
+                        $employeeSeniority->setLevel6($dataValue->level6);
                     }
                     if (isset($dataValue->level7)) {
-                        $employeeSeniority->setLevel2($dataValue->level7);
+                        $employeeSeniority->setLevel7($dataValue->level7);
                     }
                     if (isset($dataValue->level8)) {
-                        $employeeSeniority->setLevel3($dataValue->level8);
+                        $employeeSeniority->setLevel8($dataValue->level8);
                     }
                     if (isset($dataValue->level9)) {
-                        $employeeSeniority->setLevel4($dataValue->level9);
+                        $employeeSeniority->setLevel9($dataValue->level9);
                     }
                     if (isset($dataValue->level10)) {
-                        $employeeSeniority->setLevel5($dataValue->level10);
+                        $employeeSeniority->setLevel10($dataValue->level10);
                     }
                     $employeeSeniority->setManagementLevel($dataValue->managementLevel);
                     $employeeSeniority->setManagementChain($dataValue->managementChain);
@@ -259,10 +288,15 @@ class ApiToBDDService
                     $employeeSeniority->setActive('1');
                     $employeeSeniority->setCreatedAt(new \DateTime());
                     $this->entityManager->persist($employeeSeniority);
+                    
+                    $update['history'] += [$existingEmployeeSeniority->getEmployee()->getEmployeeId() => date('Y-m-d H:i:s')];
+                    $update['update'] += [$employee->getEmployeeId() => date('Y-m-d H:i:s')];
                 }
             }
         }
 
         $this->entityManager->flush();
+
+        return $update;
     }
 }
